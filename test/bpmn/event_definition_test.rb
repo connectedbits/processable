@@ -229,7 +229,7 @@ module Bpmn
 
       describe :before_timer_expiration do
         before do
-          Timecop.travel(15.seconds)
+          travel 15.seconds
           process.check_expired_timers
         end
 
@@ -240,7 +240,7 @@ module Bpmn
 
       describe :after_timer_expiration do
         before do
-          Timecop.travel(35.seconds)
+          travel 35.seconds
           process.check_expired_timers
         end
 

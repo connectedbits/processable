@@ -1,5 +1,4 @@
 require:
-  - rubocop-rails
   - rubocop-performance
 
 ### Everything
@@ -8,34 +7,13 @@ AllCops:
   NewCops: disable
   DisabledByDefault: true
   Exclude:
-    - db/**/*
-    # - config/**/*
-    - node_modules/**/*
-    - config/homebrew/**/*
-    - bin/brakeman
-    - bin/bundle
-    - bin/bundler-audit
-    - bin/i18n-tasks
-    - bin/foreman
-    - bin/guard
-    - bin/imonitor
-    - bin/pry
-    - bin/puma
-    - bin/que
-    - bin/rails
-    - bin/rake
-    - bin/rubocop
-    - bin/spring
-    - bin/stats
-    - bin/update
-    - bin/webpack
-    - bin/webpack-dev-server
-    - bin/yarn
-    - test/dummy/bin/*
-    - test/dummy/config/environments/*
-    - test/dummy/config/boot.rb
-    - test/dummy/config/initializers/assets.rb
-    - test/dummy/db/*
+    - bin/*
+  Include:
+    - Rakefile
+    - bin/test
+    - bin/setup
+    - lib/**/*.rb
+    - test/**/*.rb
 
 ### Style Department
 
@@ -62,6 +40,9 @@ Style/BlockComments:
 
 Style/FrozenStringLiteralComment:
   Enabled: true
+  Exclude:
+    - Rakefile
+    - bin/*
 
 Style/RegexpLiteral:
   Enabled: false
@@ -166,23 +147,6 @@ Security:
 
 Bundler:
   Enabled: true
-
-### Rails Department
-
-Rails:
-  Enabled: true
-
-Rails/RefuteMethods:
-  Enabled: false
-
-Rails/DynamicFindBy:
-  AllowedMethods:
-    - find_by_sql
-    - find_by_identifiers
-    - find_by_id_or_provider
-  AllowedReceivers:
-    - Gem::Specification
-    - Spot3::Reporter
 
 ### Lint Department
 

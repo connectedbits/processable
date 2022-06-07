@@ -119,22 +119,28 @@ HelloWorld completed *
 * [Execution](/docs/execution.md)
 
 ## Installation
-Add this line to your application's Gemfile:
 
-```ruby
-gem 'processable'
-```
-
-And then execute:
+Execute:
 ```bash
-$ bundle
+$ bundle add "processable"
 ```
 
-Or install it yourself as:
+Or install it directly:
 ```bash
 $ gem install processable
 ```
+
+## Development
+
+```bash
+$ git clone ...
+$ bin/setup
+$ bin/rake
+$ bin/guard
+```
+
 ## License
+
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
 Developed by [Connected Bits](http://www.connectedbits.com)

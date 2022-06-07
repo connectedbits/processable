@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require "test_helper"
 
 module ProcessableServices
@@ -6,7 +7,7 @@ module ProcessableServices
     let(:source) { fixture_source("dish.dmn") }
     let(:moddle) { service.call(source) }
 
-    it 'should parse dmn moddle' do
+    it "should parse dmn moddle" do
       _(moddle).wont_be_nil
       _(moddle["drgElement"].first["id"]).must_equal("Dish")
     end

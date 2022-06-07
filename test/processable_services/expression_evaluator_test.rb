@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require "test_helper"
 
 module ProcessableServices
@@ -9,14 +10,14 @@ module ProcessableServices
         let(:expression) { "person.name" }
 
         it "should evaluate expression" do
-          result = service.call(expression: expression, variables: { person: { name: 'Eric' } })
-          _(result).must_equal 'Eric'
+          result = service.call(expression: expression, variables: { person: { name: "Eric" } })
+          _(result).must_equal "Eric"
         end
       end
 
       describe :test do
         it "should evaluate expression" do
-          result = service.call(expression: "${ action = 'ok' }", variables: { action: 'ok' })
+          result = service.call(expression: "${ action = 'ok' }", variables: { action: "ok" })
           _(result).must_equal true
         end
       end

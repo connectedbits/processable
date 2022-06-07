@@ -17,22 +17,22 @@ module Processable
       Array.wrap(sources).each do |source|
         if source.include?("http://www.omg.org/spec/DMN/20180521/DC/")
           moddle = ProcessableServices::DecisionReader.call(source)
-          moddle["drgElement"].each { |d| decisions[d["id"]] = source}
+          moddle["drgElement"].each { |d| decisions[d["id"]] = source }
         else
           moddle = ProcessableServices::ProcessReader.call(source)
           builder = Bpmn::Builder.new(moddle)
           @processes = @processes + builder.processes
         end
-      end if sources
+      end
 
       Array.wrap(moddles).each do |moddle|
         if moddle["drgElement"]
-          moddle["drgElement"].each { |d| decisions[d["id"]] = source}
+          moddle["drgElement"].each { |d| decisions[d["id"]] = source }
         else
           builder = Bpmn::Builder.new(moddle)
           @processes = @processes + builder.processes
         end
-      end if moddles    
+      end
     end
 
     def notify_listener(event)

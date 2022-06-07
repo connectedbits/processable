@@ -1,5 +1,5 @@
-#!/usr/bin/env ruby
-$: << File.expand_path("../test", __dir__)
+#!/bin/sh
+set -e
+cd "$(dirname "$0")/.."
 
-require "bundler/setup"
-require "rails/plugin/test"
+exec bundle exec rake test

@@ -44,7 +44,7 @@ module Bpmn
         when "bpmn:messageRef"
           message_event_definition = @elements[reference_json["element"]["id"]]
           if message_event_definition
-            message_event_definition.message_ref = reference_json["id"] 
+            message_event_definition.message_ref = reference_json["id"]
             message_event_definition.message = @elements[reference_json["id"]]
           end
         when "bpmn:signalRef"
@@ -78,7 +78,7 @@ module Bpmn
       # Hack: wire up event definitions to event (has to be a better way)
       @elements.values.each do |element|
         if element.is_a?(Bpmn::Event) && element.event_definition_ids.present?
-          element.event_definition_ids.each { |edid| element.event_definitions.push @elements[edid] } 
+          element.event_definition_ids.each { |edid| element.event_definitions.push @elements[edid] }
         end
       end
 
@@ -114,7 +114,7 @@ module Bpmn
     def load_process(element_json, parent: nil)
       process = elements[element_json["id"]]
       process.parent = parent
-      element_json["flowElements"].each do |flow_element|
+      Array.wrap(element_json["flowElements"]).each do |flow_element|
         element = @elements[flow_element["id"]]
         next unless element
         process.elements.push element
@@ -125,7 +125,7 @@ module Bpmn
           ad_hoc_sub_process = load_process(flow_element, parent: process)
           process.sub_processes.push ad_hoc_sub_process
         end
-      end if element_json["flowElements"]
+      end
       @processes.push = process if process.type == "Process"
       process
     end

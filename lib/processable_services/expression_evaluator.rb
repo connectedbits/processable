@@ -8,7 +8,7 @@ module ProcessableServices
     def self.call(expression:, variables: {})
       new(expression: expression, variables: variables).call
     end
-    
+
     def initialize(expression:, variables: {})
       super()
       @expression = expression.strip
